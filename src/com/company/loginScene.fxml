@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane minHeight="500.0" minWidth="500.0" prefHeight="720.0" prefWidth="1280.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.FXMLController">
+   <children>
+      <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="388.0" prefWidth="497.0">
+               <children>
+                  <Button fx:id="loginButton" disable="${loginField.text.empty}"  layoutX="174.0" layoutY="249.0" mnemonicParsing="false" onAction="#loginButtonClicked" prefHeight="25.0" prefWidth="149.0" styleClass="primary-button" text="Log in" />
+                  <TextField fx:id="loginField" layoutX="174.0" layoutY="135.0" promptText="login" styleClass="login-field" />
+                  <TextField fx:id="passwordField" layoutX="174.0" layoutY="189.0" promptText="password" styleClass="login-field" />
+                  <Text layoutX="174.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="login-label" text="Password" />
+                  <Text layoutX="174.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="login-label" text="Login" />
+               </children>
+            </Pane>
+         </children>
+      </FlowPane>
+   </children>
+</AnchorPane>

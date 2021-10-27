@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.FXMLController">
+   <children>
+      <SplitPane dividerPositions="0.08059467918622848" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane maxWidth="100.0" minWidth="100.0" prefHeight="724.0" prefWidth="300.0">
+               <children>
+                  <VBox alignment="CENTER" layoutX="2.0" layoutY="2.0" prefHeight="726.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button fx:id="billsButton" mnemonicParsing="false" onAction="#billsButtonClicked" styleClass="sections-button-selected" text="Bills">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin></Button>
+                        <Button fx:id="tablesButton" mnemonicParsing="false" onAction="#tablesButtonClicked" styleClass="sections-button" text="Tables">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin></Button>
+                        <Button fx:id="shiftsButton" mnemonicParsing="false" onAction="#shiftsButtonClicked" styleClass="sections-button" text="Shifts" />
+                     </children></VBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="300.0" prefHeight="724.0" prefWidth="928.0" SplitPane.resizableWithParent="false">
+               <children>
+                  <AnchorPane fx:id="shiftsAnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label text="Shifts" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0">
+                           <font>
+                              <Font name="System Bold" size="70.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="tablesAnchorPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label text="Tables" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0">
+                           <font>
+                              <Font name="System Bold" size="70.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fdfdfd;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
+                           <content>
+                              <FlowPane fx:id="tablesFlow" hgap="20.0" prefHeight="566.0" prefWidth="1107.0" style="-fx-background-color: #fdfdfd;" vgap="20.0">
+                                 <padding>
+                                    <Insets left="20.0" top="20.0" />
+                                 </padding>
+                              </FlowPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="billsAnchorPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label layoutX="50.0" layoutY="47.0" text="Bills" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0">
+                           <font>
+                              <Font name="System Bold" size="70.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
+                           <content>
+                              <HBox fx:id="itemBoxHbox" fillHeight="false" prefHeight="580.0" prefWidth="641.0" spacing="20.0" styleClass="item-box-hbox" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Pane fx:id="itemBox" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#itemBoxMouseClicked" prefHeight="504.0" prefWidth="318.0" styleClass="item-box">
+                                       <children>
+                                          <Label layoutX="145.0" layoutY="264.0" text="+" />
+                                       </children>
+                                    </Pane>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </HBox>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
