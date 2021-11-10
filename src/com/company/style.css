@@ -57,16 +57,22 @@
 .item-box-table:hover {
     -fx-effect: dropshadow(three-pass-box, #4c71a8, 20, 0, 0, 0);
 }
+.item-box-popup-list {
+    -fx-background-color: #FFFFFF;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(three-pass-box, grey, 5, 0, 0, 0);
+}
+.item-box-hbox {
+    -fx-background-color: #fdfdfd;
+}
 AnchorPane {
     -fx-background-color: #fdfdfd;
 }
 ScrollPane {
     -fx-background-color: #fdfdfd;
 }
-.item-box-hbox {
-    -fx-background-color: #fdfdfd;
 
-}
 .item-table {
     -fx-background-color: #efefef;
     -fx-border-radius: 20px;
@@ -83,6 +89,7 @@ ScrollPane {
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
     -fx-font-weight: bold;
+
 }
 .primary-button:hover{
     -fx-effect: dropshadow(three-pass-box, #4c71a8, 5, 0, 0, 0);
@@ -177,4 +184,28 @@ ScrollPane {
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
     -fx-font-weight: bold;
+}
+.popup-close-button {
+    -icon-paint: #00ff2a;
+    -fx-background-color: -icon-paint;
+    -size: 24;
+    -fx-min-height: -size;
+    -fx-min-width: -size;
+    -fx-max-height: -size;
+    -fx-max-width: -size;
+}
+.popup-label {
+    -fx-font-family: "Roboto Light";
+    -fx-font-weight: bold;
+    -fx-font-size: 30px;
+    -fx-pref-height: 50;
+    -fx-pref-width: 200;
+}
+.button .close-button {
+    -fx-fill: red;
+    -fx-stroke-width: 16;
+}
+
+.button:hover .close-button {
+    -fx-fill: #dc4d4d;
 }
