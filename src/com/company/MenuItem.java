@@ -3,27 +3,27 @@ package com.company;
 import java.math.BigDecimal;
 
 public class MenuItem {
-    private int id;
-    private String itemName;
+    //private int id;
+    private String name;
     private BigDecimal cost;
     private String structure;
     private String size;
 
-    public int getId() {
-        return id;
-    }
+//    public int getId() {
+//        return id;
+//    }
 
-    public MenuItem (int id, String itemName, BigDecimal cost, String structure, String size)
+    public MenuItem (/*int id,*/ String name, BigDecimal cost, String structure, String size)
     {
-        this.id = id;
-        this.itemName = itemName;
+        //this.id = id;
+        this.name = name;
         this.cost = cost;
         this.structure = structure;
         this.size = size;
     }
 
     public String getItemName() {
-        return itemName;
+        return name;
     }
 
     public BigDecimal getCost() {
@@ -36,26 +36,6 @@ public class MenuItem {
 
     public String getSize() {
         return size;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
-    public void setCost(BigDecimal cost) {
-        this.cost = cost;
-    }
-
-    public void setStructure(String structure) {
-        this.structure = structure;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
     }
 
 }

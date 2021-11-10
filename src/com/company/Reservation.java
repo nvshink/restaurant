@@ -4,50 +4,33 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class Reservation {
-    private int id;
-    private int tableID;
-    private LocalDateTime reservationTime;
-    private String nameReservation;
+    //private final int id;
+    // private final Table table;
+    private final int tableID;
+    private final LocalDateTime startTime;  // startTime;
+    private final String comment;         // comment
 
 
-    public Reservation(int id, int tableID, LocalDateTime reservationTime, String nameReservation) {
-        this.id = id;
+    public Reservation(/*int id,*/ int tableID, LocalDateTime startTime, String comment) {
+        //this.id = id;
         this.tableID = tableID;
-        this.reservationTime = reservationTime;
-        this.nameReservation = nameReservation;
+        this.startTime = startTime;
+        this.comment = comment;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public int getId() {
+//        return id;
+//    }
 
     public int getTableID() {
         return tableID;
     }
 
-    public void setTableID(int tableID) {
-        this.tableID = tableID;
+    public LocalDateTime getstartTime() {
+        return startTime;
     }
 
-    public LocalDateTime getReservationTime() {
-        return reservationTime;
+    public String getcomment() {
+        return comment;
     }
-
-    public void setReservationTime(LocalDateTime reservationTime) {
-        this.reservationTime = reservationTime;
-    }
-
-    public String getNameReservation() {
-        return nameReservation;
-    }
-
-    public void setNameReservation(String nameReservation) {
-        this.nameReservation = nameReservation;
-    }
-
-
 }
