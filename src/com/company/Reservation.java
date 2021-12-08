@@ -1,26 +1,21 @@
 package com.company;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Reservation {
-    //private final int id;
-    // private final Table table;
+public class Reservation implements Serializable {
+
     private final int tableID;
-    private final LocalDateTime startTime;  // startTime;
-    private final String comment;         // comment
+    private final LocalDateTime startTime;
+    private final String comment;
 
 
-    public Reservation(/*int id,*/ int tableID, LocalDateTime startTime, String comment) {
-        //this.id = id;
+    public Reservation(int tableID, LocalDateTime startTime, String comment) {
         this.tableID = tableID;
         this.startTime = startTime;
         this.comment = comment;
     }
-
-//    public int getId() {
-//        return id;
-//    }
 
     public int getTableID() {
         return tableID;

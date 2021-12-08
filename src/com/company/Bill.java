@@ -1,26 +1,22 @@
 package com.company;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Bill {
-    //private int id;
+public class Bill implements Serializable {
     private final List<MenuItem> menuItems;
     private BigDecimal amount;
     private final String employeeName;
-//    private final int employeeId;
 
     private LocalDateTime payTime;
 
-    public Bill(/*int id,*/ /*boolean payed,*/ List<MenuItem> menuItems, BigDecimal amount,
-                String employeeName, /*int employeeId,*/ LocalDateTime payTime) {
-        //this.id = id;
-        //this.payed = payed;
+    public Bill(List<MenuItem> menuItems, BigDecimal amount,
+                String employeeName, LocalDateTime payTime) {
         this.menuItems = menuItems;
         this.amount = amount;
         this.employeeName = employeeName;
-       // this.employeeId = employeeId;
         this.payTime = payTime;
     }
     public List<MenuItem> getMenuItems() {

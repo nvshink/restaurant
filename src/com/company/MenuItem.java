@@ -1,21 +1,16 @@
 package com.company;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class MenuItem {
-    //private int id;
-    private String name;
-    private BigDecimal cost;
-    private String structure;
-    private String size;
+public class MenuItem implements Serializable {
+    private final String name;
+    private final BigDecimal cost;
+    private final String structure;
+    private final String size;
 
-//    public int getId() {
-//        return id;
-//    }
 
-    public MenuItem (/*int id,*/ String name, BigDecimal cost, String structure, String size)
-    {
-        //this.id = id;
+    public MenuItem(String name, BigDecimal cost, String structure, String size) {
         this.name = name;
         this.cost = cost;
         this.structure = structure;
