@@ -29,6 +29,8 @@ public class FXMLController {
     private TextField loginField;
     @FXML
     private TextField passwordField;
+    @FXML
+    private Button loginButton;
 
     @FXML
     private void loginButtonClicked(ActionEvent event) throws Exception {
@@ -43,14 +45,16 @@ public class FXMLController {
             }
         }
     }
-//    @FXML
-//    private void logInFieldsChanged() {
-//        if (passwordField.getText().isEmpty() && loginField.getText().isEmpty()) {
-//            loginButton.setDisable(true);
-//        } else {
-//            loginButton.setDisable(false);
-//        }
-//    }
+
+    @FXML
+    private void logInFieldsChanged() {
+        if (passwordField.getText().isEmpty() && loginField.getText().isEmpty()) {
+            loginButton.setDisable(true);
+        } else {
+            loginButton.setDisable(false);
+        }
+    }
+
     @FXML
     private AnchorPane contentAnchorPane;
     @FXML
@@ -67,26 +71,6 @@ public class FXMLController {
     @FXML
     private void itemBoxMouseClicked() {
         addBill();
-
-//        ContextMenu billContextMenu = new ContextMenu();
-//        List<javafx.scene.control.MenuItem> contextMenuItem = new ArrayList<>();
-//        for (int i = 0; i < menuItems.size(); i++) {
-//            javafx.scene.control.MenuItem item = new javafx.scene.control.MenuItem(menuItems.get(i).getItemName() + " " + menuItems.get(i).getSize() + " "
-//                    + menuItems.get(i).getCost() + "r. ("
-//                    + menuItems.get(i).getStructure() + ")");
-//            billContextMenu.getItems().add(item);
-//            int j = i;
-//            item.setOnAction(new EventHandler<ActionEvent>() {
-//                public void handle(ActionEvent event) {
-//                    billTableView.getItems().add(menuItems.get(j));
-//                }
-//            });
-//            contextMenuItem.add(item);
-//        }
-
-
-
-
     }
 
     private VBox addBill() {
@@ -129,7 +113,8 @@ public class FXMLController {
         tableView.getColumns().addAll(itemName, itemValue);
         return tableView;
     }
-    private HBox addTableButtons (TableView tableView) {
+
+    private HBox addTableButtons(TableView tableView) {
         HBox tableButtonsHBox = new HBox();
         Button deleteListView = new Button("-");
         deleteListView.getStyleClass().add("delete-button");
@@ -144,8 +129,6 @@ public class FXMLController {
         addListView.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
                 openPopup();
-//                contentAnchorPane.getChildren().add();
-                //billContextMenu.show(addListView, event.getScreenX(), event.getScreenY());
             }
         });
         deleteListView.setPrefWidth(25);
@@ -154,16 +137,16 @@ public class FXMLController {
         tableButtonsHBox.getChildren().addAll(deleteListView, addListView);
         return tableButtonsHBox;
     }
+
     @FXML
     private AnchorPane popupAnchorPane;
 
-    private HBox addBoxButtons (TableView tableView) {
+    private HBox addBoxButtons(TableView tableView) {
 
         HBox boxButtonsHBox = new HBox();
         Button deleteBox = new Button("Удалить");
         deleteBox.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
-                //   itemBoxHbox.getChildren().remove(billVBox);
             }
         });
         deleteBox.getStyleClass().add("delete-button");
@@ -171,10 +154,9 @@ public class FXMLController {
         payBox.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
                 if (!tableView.getItems().isEmpty()) {
-                   // bill.setPayTime(LocalDateTime.now());
+                    // bill.setPayTime(LocalDateTime.now());
                     payBox.setText("Оплачено");
                     payBox.getStyleClass().add("green-button");
-                    //itemBoxHbox.getChildren().remove(billVBox);
                 }
             }
         });
@@ -184,8 +166,12 @@ public class FXMLController {
         boxButtonsHBox.getChildren().addAll(deleteBox, payBox);
         return boxButtonsHBox;
     }
-    @FXML BorderPane popupBorderPane;
-    @FXML Button popupButtonClose;
+
+    @FXML
+    BorderPane popupBorderPane;
+    @FXML
+    Button popupButtonClose;
+
     //TODO: доделать вывод таблицы, кнопки и адаптацию титульника и кнопки
     private void openPopup() {
         popupBorderPane.setVisible(true);
@@ -196,9 +182,9 @@ public class FXMLController {
         contentAnchorPane.setEffect(bb);
         popupButtonClose.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
-                    popupBorderPane.setVisible(false);
-                    contentAnchorPane.setEffect(null);
-                    //itemBoxHbox.getChildren().remove(billVBox);
+                popupBorderPane.setVisible(false);
+                contentAnchorPane.setEffect(null);
+                //itemBoxHbox.getChildren().remove(billVBox);
             }
         });
 //        popupButtonClose.getStyleClass().add("popup-button-close");
@@ -226,6 +212,7 @@ public class FXMLController {
 //        popupButtonClose.setMinSize(150, 150);
 //        popupButtonClose.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
     }
+
     @FXML
     private AnchorPane billsAnchorPane;
     @FXML
@@ -261,7 +248,6 @@ public class FXMLController {
         tablesGenerate();
         billsAnchorPane.setVisible(false);
         tablesAnchorPane.setVisible(true);
-        ;
         shiftsAnchorPane.setVisible(false);
         billsButton.getStyleClass().remove("sections-button-selected");
         billsButton.getStyleClass().add("sections-button");
@@ -274,9 +260,9 @@ public class FXMLController {
     private void tablesGenerate() {
         if (!isTablesGenerated) {
             for (Table table : tables) {
-                HBox tableHBox = table.isReserved()
+                HBox tableHBox = table.getReservations().isEmpty()
                         ? addNotReservedTable(table.getId())
-                        : addReservedTable(table.getId(), table.getReservations(), table.getReservationId());
+                        : addReservedTable(table.getId(), table.getReservations());
                 tablesFlow.getChildren().add(tableHBox);
             }
             isTablesGenerated = true;
@@ -318,10 +304,15 @@ public class FXMLController {
         button.setText("Reserve");
         button.getStyleClass().addAll("tables-reserve-button", "tables-reserve-button-primary");
         button.setTextAlignment(TextAlignment.CENTER);
+        button.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent event) {
+                openPopup();
+            }
+        });
         return button;
     }
 
-    public HBox addReservedTable(int tableNumber, List<Reservation> reservations, int reservationId) {
+    public HBox addReservedTable(int tableNumber, List<Reservation> reservations) {
         HBox tableHBox = new HBox();
         tableHBox.setAlignment(Pos.CENTER);
         tableHBox.getStyleClass().add("item-box");
@@ -329,17 +320,17 @@ public class FXMLController {
         tableHBox.setPrefWidth(200);
         tableHBox.setMinHeight(Region.USE_PREF_SIZE);
         tableHBox.setMinWidth(Region.USE_PREF_SIZE);
-        tableHBox.getChildren().addAll(addReservedTableVBox(tableNumber, reservations, reservationId), addReservedTableButton());
+        tableHBox.getChildren().addAll(addReservedTableVBox(tableNumber, reservations), addReservedTableButton());
         return tableHBox;
     }
 
-    private VBox addReservedTableVBox(int tableNumber, List<Reservation> reservations, int reservationId) {
+    private VBox addReservedTableVBox(int tableNumber, List<Reservation> reservations) {
         VBox vBox = new VBox();
         vBox.setAlignment(Pos.CENTER);
         vBox.setPadding(new Insets(5));
         vBox.setPrefWidth(100);
         vBox.setPrefHeight(100);
-        vBox.getChildren().addAll(addReservedTableNumber(tableNumber), addReservedTableDescription(reservations, reservationId));
+        vBox.getChildren().addAll(addReservedTableNumber(tableNumber), addReservedTableDescription(reservations));
         return vBox;
     }
 
@@ -351,7 +342,7 @@ public class FXMLController {
         return label;
     }
 
-    private Label addReservedTableDescription(List<Reservation> reservations, int reservationId) {
+    private Label addReservedTableDescription(List<Reservation> reservations) {
         Label label = new Label();
         Reservation reservation = reservations.get(0);
         LocalDateTime startTime = reservation.getstartTime();
@@ -367,6 +358,11 @@ public class FXMLController {
         button.setText("Other");
         button.getStyleClass().addAll("tables-reserve-button", "tables-reserve-button-green");
         button.setTextAlignment(TextAlignment.CENTER);
+        button.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent event) {
+                openPopup();
+            }
+        });
         return button;
     }
 
@@ -375,7 +371,6 @@ public class FXMLController {
         billsAnchorPane.setVisible(false);
         tablesAnchorPane.setVisible(false);
         shiftsAnchorPane.setVisible(true);
-        ;
         billsButton.getStyleClass().remove("sections-button-selected");
         billsButton.getStyleClass().add("sections-button");
         tablesButton.getStyleClass().remove("sections-button-selected");

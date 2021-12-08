@@ -1,13 +1,16 @@
 package com.company;
 
-public class Employee {
+import java.io.Serializable;
+
+public class Employee implements Serializable {
     private final String lastName;
     private final String firstName;
     private final String middleName;
     private final String post;
     private final String login;
     private final String password;
-    public Employee (int id, String lastName, String firstName, String middleName, String post, String login, String password) {
+    public Employee (String lastName, String firstName, String middleName,
+                     String post, String login, String password) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.middleName = middleName;

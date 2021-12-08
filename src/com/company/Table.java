@@ -1,34 +1,22 @@
 package com.company;
+
+import java.io.Serializable;
 import java.util.*;
 
-public class Table {
+public class Table implements Serializable {
     private final int id;
-    private final int reservationId;
+    private final List<Reservation> reservations;
 
-    private List<Reservation> reservations;
-
-    public List<Reservation> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
-    }
-
-    public Table(int id, int reservationId) {
+    public Table(int id, List<Reservation> reservations) {
         this.id = id;
-        this.reservationId = reservationId;
+        this.reservations = reservations;
     }
 
     public int getId() {
         return id;
     }
-    public int getReservationId() {
-        return reservationId;
-    }
-    public boolean isReserved() {
-        return reservationId != 0;
-    }
 
-
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
 }
